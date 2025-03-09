@@ -1,0 +1,90 @@
+/* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f0f4f7;
+    color: #333;
+    text-align: center;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Botão voltar */
+.btn.voltar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Formulário */
+form {
+    background-color: white;
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+/* Estilo dos campos de input */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo do botão de salvar */
+.btn.salvar {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.salvar:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do botão de upload de imagem */
+input[type="file"] {
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 10px;
+}

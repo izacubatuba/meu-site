@@ -1,0 +1,166 @@
+/* Reset de margens e padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Campo de pesquisa */
+#searchInput {
+    width: 90%;
+    max-width: 400px;
+    padding: 12px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 2px 2px 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Container de produtos organizado em grade */
+#productsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste dinâmico */
+    gap: 15px;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Cartão de produto */
+.product-card {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do produto */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.05);
+}
+
+/* Nome do produto */
+.product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Código de Barras */
+.codigo-barras {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Botões de editar e excluir */
+.product-card .btn-editar,
+.product-card .btn-excluir {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.product-card .btn-editar {
+    background-color: #007bff;
+}
+
+.product-card .btn-editar:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.product-card .btn-excluir {
+    background-color: #dc3545;
+}
+
+.product-card .btn-excluir:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+    
+    .btn {
+        padding: 10px 15px;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card h3 {
+        font-size: 14px;
+    }
+
+    .codigo-barras {
+        font-size: 12px;
+    }
+}
