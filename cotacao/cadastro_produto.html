@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="cadastro-produto.css">
+</head>
+<body>
+    <header>
+        <h1>Cadastrar Novo Produto</h1>
+        <a href="index.html" class="btn voltar">Voltar para Produtos</a>
+    </header>
+
+    <main>
+        <form id="productForm">
+            <div class="form-group">
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName" name="productName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productCode">Código de Barras:</label>
+                <input type="text" id="productCode" name="productCode" required>
+            </div>
+
+            <div class="form-group">
+                <label for="imageOption">Escolha a Imagem:</label><br>
+                <input type="radio" id="uploadOption" name="imageOption" value="upload" checked> 
+                <label for="uploadOption">Fazer upload da imagem</label><br>
+                <input type="radio" id="linkOption" name="imageOption" value="link"> 
+                <label for="linkOption">Inserir URL da imagem</label>
+            </div>
+
+            <div class="form-group" id="imageInputSection">
+                <label for="productImage">Imagem do Produto:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*">
+                <input type="text" id="productImageUrl" name="productImageUrl" placeholder="Ou insira o link da imagem" style="display:none;">
+            </div>
+
+            <button type="submit" class="btn salvar">Salvar Produto</button>
+        </form>
+    </main>
+
+    <script src="cadastro-produto.js"></script>
+</body>
+</html>

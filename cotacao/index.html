@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Produtos Cadastrados</h1>
+        <a href="cadastro_produto.html" class="btn">Cadastrar Novo Produto</a>
+    </header>
+
+    <main>
+        <!-- Campo de Pesquisa -->
+        <input type="text" id="searchInput" placeholder="Pesquisar por nome ou código de barras...">
+
+        <div id="productsContainer">
+            <!-- Os produtos serão carregados dinamicamente via JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        const API_URL = "http://127.0.0.1:5000/api"; // Altere se necessário
+
+        // Função para carregar produtos da API
+        async function carregarProdutos() {
+            const container = document.getElementById("productsContainer");
+
+            try {
+                const response = await fetch(`${API_URL}/produtos`);
+                const produtos = await response.json();
+
+                container.innerHTML = ""; // Limpa a lista antes de renderizar
+
+                produtos.forEach(produto => {
+                    const card = document.createElement("div");
+                    card.classList.add("product-card");
+
+                    card.innerHTML = `
+                        <img src="${produto.imagem}" alt="${produto.descricao_produto}">
+                        <h3>${produto.descricao_produto}</h3>
+                        <p class="codigo-barras">Código: ${produto.cod_barras}</p>
+                        <a href="editar_produto.html?codigoBarras=${produto.cod_barras}" class="btn-editar">Editar</a>
+                        <a href="#" class="btn-excluir" onclick="confirmarExclusao('${produto.cod_barras}')">Excluir</a>
+                    `;
+
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error("Erro ao carregar produtos:", error);
+            }
+        }
+
+        // Função para confirmar exclusão
+        function confirmarExclusao(codigo) {
+            if (confirm("Tem certeza que deseja excluir este produto?")) {
+                excluirProduto(codigo);
+            }
+        }
+
+        // Função para excluir um produto da API
+        async function excluirProduto(codigo) {
+            try {
+                const response = await fetch(`${API_URL}/produto/${codigo}`, {
+                    method: "DELETE"
+                });
+
+                if (response.ok) {
+                    alert("Produto excluído com sucesso!");
+                    carregarProdutos(); // Atualiza a lista após exclusão
+                } else {
+                    alert("Erro ao excluir o produto.");
+                }
+            } catch (error) {
+                console.error("Erro ao excluir produto:", error);
+            }
+        }
+
+        // Função para filtrar produtos com base na pesquisa
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const termoPesquisa = this.value.toLowerCase();
+            const produtos = document.querySelectorAll(".product-card");
+
+            produtos.forEach(produto => {
+                const nomeProduto = produto.querySelector("h3").textContent.toLowerCase();
+                const codigoBarras = produto.querySelector(".codigo-barras").textContent.toLowerCase();
+
+                if (nomeProduto.includes(termoPesquisa) || codigoBarras.includes(termoPesquisa)) {
+                    produto.style.display = "block";
+                } else {
+                    produto.style.display = "none";
+                }
+            });
+        });
+
+        // Carregar produtos ao iniciar
+        window.onload = carregarProdutos;
+    </script>
+</body>
+</html>
